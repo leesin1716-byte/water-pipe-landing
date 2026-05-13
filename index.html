@@ -926,6 +926,11 @@
         </select>
       </div>
 
+      <div class="mb-5">
+        <label for="f-message" class="block font-semibold text-[14px] mb-2">문의 내용 <span class="text-sub font-normal">(선택)</span></label>
+        <textarea id="f-message" name="message" rows="3" class="field resize-none" placeholder="궁금하신 점이나 상담 내용을 간단히 적어주세요."></textarea>
+      </div>
+
       <label class="flex items-start gap-3 mb-5 cursor-pointer">
         <input id="f-agree" type="checkbox" class="mt-1 w-5 h-5 accent-blue" required>
         <span class="text-[13px] leading-relaxed text-sub">
@@ -1308,12 +1313,26 @@
           name: form.name.value.trim(),
           phone: form.phone.value,
           time: form.time.value,
+          message: form.message.value.trim(),
         }),
       })
         .then(async (res) => {
           const data = await res.json().catch(() => ({}));
+          // 중복 번호 → 에러가 아닌 완료 알림으로 처리
+          if (res.status === 409) {
+            label.innerHTML = '<i data-lucide="check-circle-2" class="w-5 h-5"></i> 신청이 완료되었습니다';
+            btn.style.background = '#28a99c';
+            refreshIcons();
+            showToast('이미 상담 신청이 접수되었습니다. 곧 연락드릴게요.');
+            form.reset();
+            setTimeout(() => {
+              btn.disabled = false; btn.style.background = '';
+              label.innerHTML = '무료 상담 신청하기 <i data-lucide="send" class="w-5 h-5"></i>';
+              refreshIcons();
+            }, 4000);
+            return;
+          }
           if (!res.ok) {
-            // 서버에서 내려준 에러 메시지 표시
             const msg = data.error || '오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
             showToast(msg);
             label.innerHTML = '무료 상담 신청하기 <i data-lucide="send" class="w-5 h-5"></i>';

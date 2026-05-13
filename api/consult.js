@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
   }
 
   // --- 입력 파싱 및 기본 검증 ---
-  const { name, phone, time } = req.body || {};
+  const { name, phone, time, message } = req.body || {};
 
   if (!name?.trim()) {
     return res.status(400).json({ error: '이름을 입력해 주세요.' });
@@ -79,6 +79,7 @@ module.exports = async function handler(req, res) {
       name: name.trim(),
       phone: phoneClean,
       time_pref: time || null,
+      message: message?.trim() || null,
       ip,
     });
 
@@ -122,6 +123,10 @@ module.exports = async function handler(req, res) {
             <tr>
               <td style="padding:14px 18px;border-bottom:1px solid #e3eaf2;color:#5b6b7c;font-size:13px;">희망 시간</td>
               <td style="padding:14px 18px;border-bottom:1px solid #e3eaf2;color:#14213d;">${time || '언제든 가능'}</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 18px;border-bottom:1px solid #e3eaf2;color:#5b6b7c;font-size:13px;">문의 내용</td>
+              <td style="padding:14px 18px;border-bottom:1px solid #e3eaf2;color:#14213d;white-space:pre-wrap;">${message?.trim() || '(없음)'}</td>
             </tr>
             <tr>
               <td style="padding:14px 18px;color:#5b6b7c;font-size:13px;">신청 시각</td>
