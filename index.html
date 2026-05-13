@@ -167,8 +167,16 @@
     padding: 22px 18px 20px; min-height: 132px;
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     display:flex; flex-direction:column; gap:10px;
+    position: relative; overflow: hidden;
+  }
+  .qs-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s ease;
   }
   .qs-card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(14,42,82,.12); border-color: transparent; }
+  .qs-card:hover::before { transform: scaleX(1); }
   .qs-card .ic { width:36px; height:36px; color: var(--ink); display:inline-flex; align-items:center; justify-content:center; }
   .qs-card .ttl { font-weight: 800; font-size: 16px; color: var(--ink); letter-spacing: -0.02em; }
   .qs-card .sub { font-size: 12.5px; color: var(--sub); line-height: 1.5; }
@@ -327,6 +335,30 @@
   /* Glow on stat numbers */
   @keyframes numIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
   .stat-num { animation: numIn .6s ease both; }
+
+  /* Section label pill */
+  .sec-label {
+    display: inline-block;
+    font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(45,78,213,.07);
+    border: 1px solid rgba(45,78,213,.15);
+    padding: 5px 14px; border-radius: 999px;
+  }
+
+  /* Subtle dot grid background */
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(14,42,82,.045) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  /* Section top accent gradient */
+  .section-glow-top::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 200px;
+    background: radial-gradient(ellipse 70% 100% at 50% 0%, rgba(45,78,213,.06), transparent);
+    pointer-events: none;
+  }
 
   /* Star fill utility */
   .fill-gold { fill: #FFC93D; }
@@ -539,11 +571,11 @@
 
 
 <!-- ============== CURRICULUM (light section, reusing similar feel) ============== -->
-<section id="curriculum" class="bg-white py-20 lg:py-28">
+<section id="curriculum" class="bg-[#f5f8ff] dot-grid py-20 lg:py-28">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="flex items-end justify-between flex-wrap gap-4 mb-12 reveal">
       <div>
-        <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-2">Curriculum</div>
+        <div class="sec-label mb-4">Curriculum</div>
         <h2 class="t-h1 text-ink">단 30시간, 전문가의 시작</h2>
       </div>
       <p class="text-sub t-bd max-w-md">이론·실습·자격시험·현장실습을 4일 안에. 60–70대 시니어도 따라올 수 있도록 설계된 과정입니다.</p>
@@ -597,7 +629,7 @@
 
     <div class="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-center mb-14 reveal">
       <div>
-        <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-3">Why now</div>
+        <div class="sec-label mb-4">Why now</div>
         <h2 class="t-h1 text-ink mb-4">법으로 보장된 시장,<br>매년 새롭게 열립니다</h2>
       </div>
       <div class="bg-white border border-line rounded-[18px] shadow-card p-7 lg:p-9 relative">
@@ -612,7 +644,8 @@
     </div>
 
     <div class="grid md:grid-cols-3 gap-4 lg:gap-5 stagger reveal">
-      <article class="bg-white rounded-[18px] p-7 border border-line card-lift">
+      <article class="bg-white rounded-[18px] p-7 border border-line card-lift relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#e35b5b]/70 to-[#e35b5b]/30"></div>
         <div class="text-[11px] font-bold text-sub/70 tracking-widest mb-3 uppercase">기존 공법 ①</div>
         <h3 class="t-h3 text-ink mb-1">배관 전면 교체</h3>
         <p class="text-sub text-[13px] mb-5 leading-relaxed">노후 배관을 완전 철거 후 신규 배관으로 교체. 입주자 전체 퇴거 필요.</p>
@@ -631,7 +664,8 @@
           </div>
         </dl>
       </article>
-      <article class="bg-white rounded-[18px] p-7 border border-line card-lift">
+      <article class="bg-white rounded-[18px] p-7 border border-line card-lift relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#f0a500]/70 to-[#f0a500]/30"></div>
         <div class="text-[11px] font-bold text-sub/70 tracking-widest mb-3 uppercase">기존 공법 ②</div>
         <h3 class="t-h3 text-ink mb-1">에폭시 라이닝</h3>
         <p class="text-sub text-[13px] mb-5 leading-relaxed">배관 내벽에 에폭시 수지를 도포하는 갱생 공법. 일부 유해물질 우려 존재.</p>
@@ -676,10 +710,10 @@
 
 
 <!-- ============== PRICING ============== -->
-<section id="pricing" class="py-20 lg:py-28 bg-white">
+<section id="pricing" class="py-20 lg:py-28 bg-white relative overflow-hidden section-glow-top">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="text-center mb-12 reveal">
-      <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-3">Tuition</div>
+      <div class="sec-label mb-4">Tuition</div>
       <h2 class="t-h1 text-ink mb-3">수강료, 부담은 우리가 함께 나눕니다</h2>
       <p class="t-bd text-sub max-w-2xl mx-auto">예비사회적기업으로서, 누구나 배움의 기회를 가질 수 있도록.</p>
     </div>
@@ -739,7 +773,7 @@
 <section id="gallery" class="bg-wash py-20 lg:py-28">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="text-center mb-12 reveal">
-      <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-3">Installation Cases</div>
+      <div class="sec-label mb-4">Installation Cases</div>
       <h2 class="t-h1 text-ink mb-3">실제 시공 사례</h2>
       <p class="t-bd text-sub max-w-xl mx-auto">신축 아파트도 예외 없습니다. 세척 전 배출된 녹물과 금속 찌꺼기, 세척 후 투명하게 바뀐 물—직접 확인하신 고객들이 가장 놀라십니다.</p>
     </div>
@@ -804,10 +838,10 @@
 
 
 <!-- ============== REVIEWS ============== -->
-<section id="cases" class="py-20 lg:py-28 bg-white">
+<section id="cases" class="py-20 lg:py-28 bg-[#f3fbf9]">
   <div class="max-w-7xl mx-auto px-5 lg:px-8">
     <div class="text-center mb-12 reveal">
-      <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-3">Real Reviews</div>
+      <div class="sec-label mb-4">Real Reviews</div>
       <h2 class="t-h1 text-ink mb-3">직접 경험한 분들의 이야기</h2>
       <p class="t-bd text-sub max-w-xl mx-auto">세척 전까지 몰랐습니다. 내 집 배관 안에 무엇이 쌓여 있었는지.</p>
     </div>
@@ -984,7 +1018,7 @@
 <section id="faq" class="py-20 lg:py-24 bg-wash">
   <div class="max-w-3xl mx-auto px-5 lg:px-8">
     <div class="text-center mb-10 reveal">
-      <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-3">FAQ</div>
+      <div class="sec-label mb-4">FAQ</div>
       <h2 class="t-h1 text-ink">자주 묻는 질문</h2>
     </div>
     <div class="space-y-3 reveal" id="faq-list"></div>
