@@ -392,8 +392,6 @@
     <div>
       <div class="flex items-center gap-3 mb-7 reveal">
         <h2 class="text-white t-h1">공지사항</h2>
-        <span class="text-white/40 text-[24px] font-light">·</span>
-        <h2 class="text-white/65 t-h1">자료실</h2>
       </div>
 
       <div id="noticeGrid" class="grid sm:grid-cols-2 gap-5"></div>
@@ -401,7 +399,7 @@
       <!-- Pager -->
       <div class="mt-8 flex items-center justify-center gap-4 reveal">
         <button id="noticePrev" class="pager-arrow" aria-label="prev"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
-        <span id="noticePager" class="text-white/80 text-[14px] num font-medium">1 / 2</span>
+        <span id="noticePager" class="text-white/80 text-[14px] num font-medium">1 / 4</span>
         <button id="noticeNext" class="pager-arrow" aria-label="next"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
         <button class="pager-add ml-2" aria-label="more" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})"><i data-lucide="plus" class="w-5 h-5"></i></button>
       </div>
@@ -485,42 +483,6 @@
 </section>
 
 
-<!-- ============== SCHEDULE ============== -->
-<section id="schedule" class="bg-wash">
-  <div class="max-w-7xl mx-auto px-5 lg:px-8 py-20 lg:py-24 grid lg:grid-cols-[1.6fr_1fr] gap-8 lg:gap-12 items-stretch">
-
-    <!-- Date list -->
-    <div class="bg-white rounded-[18px] p-8 lg:p-10 shadow-card reveal">
-      <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-6">2026 Schedule</div>
-
-      <div class="flex flex-col items-center justify-center py-12 text-center gap-4">
-        <i data-lucide="calendar-clock" class="w-12 h-12 text-blue/40"></i>
-        <p class="text-ink font-semibold text-[17px]">다음 교육 일정을 준비 중입니다</p>
-        <p class="text-sub text-[14px]">정확한 일정은 전화 또는 카카오톡 채널로 문의해 주세요.</p>
-        <a href="#cta" class="mt-2 inline-flex items-center gap-2 bg-blue text-white font-semibold text-[14px] px-6 py-3 rounded-xl hover:bg-blue2 transition">
-          상담 신청하기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <a href="#cta" class="sch-cta flex flex-col justify-between reveal hover:shadow-lift transition-shadow">
-      <div>
-        <div class="w-14 h-14 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center mb-6">
-          <i data-lucide="calendar-days" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="t-h1 leading-tight">
-          우리 학원<br>교육일정
-        </h3>
-      </div>
-      <div class="flex items-end justify-between mt-8 relative z-10">
-        <span class="text-white/80 text-[13px]">전체 일정 확인하기</span>
-        <span class="add"><i data-lucide="plus" class="w-5 h-5 text-white"></i></span>
-      </div>
-    </a>
-
-  </div>
-</section>
 
 
 <!-- ============== CURRICULUM (light section, reusing similar feel) ============== -->
@@ -598,30 +560,62 @@
 
     <div class="grid md:grid-cols-3 gap-4 lg:gap-5 stagger reveal">
       <article class="bg-white rounded-[18px] p-7 border border-line">
-        <div class="text-[12px] font-semibold text-sub mb-2 tracking-widest">EXISTING</div>
-        <h3 class="t-h3 mb-4">배관 교체</h3>
-        <dl class="space-y-2 text-[14.5px]">
-          <div class="flex justify-between"><dt class="text-sub">공사비</dt><dd class="num font-bold text-ink">약 24억원</dd></div>
-          <div class="flex justify-between"><dt class="text-sub">공사기간</dt><dd class="num font-bold text-ink">6개월+</dd></div>
+        <div class="text-[11px] font-bold text-sub/70 tracking-widest mb-3 uppercase">기존 공법 ①</div>
+        <h3 class="t-h3 text-ink mb-1">배관 전면 교체</h3>
+        <p class="text-sub text-[13px] mb-5 leading-relaxed">노후 배관을 완전 철거 후 신규 배관으로 교체. 입주자 전체 퇴거 필요.</p>
+        <dl class="space-y-3 text-[14px]">
+          <div class="flex justify-between items-center border-b border-line pb-2">
+            <dt class="text-sub">공사비 (300세대 기준)</dt>
+            <dd class="num font-bold text-ink text-[16px]">약 24억원</dd>
+          </div>
+          <div class="flex justify-between items-center border-b border-line pb-2">
+            <dt class="text-sub">공사기간</dt>
+            <dd class="num font-bold text-ink text-[16px]">6개월 이상</dd>
+          </div>
+          <div class="flex justify-between items-center">
+            <dt class="text-sub">입주자 불편</dt>
+            <dd class="font-bold text-[#e35b5b]">매우 높음</dd>
+          </div>
         </dl>
       </article>
       <article class="bg-white rounded-[18px] p-7 border border-line">
-        <div class="text-[12px] font-semibold text-sub mb-2 tracking-widest">EXISTING</div>
-        <h3 class="t-h3 mb-4">에폭시라이닝</h3>
-        <dl class="space-y-2 text-[14.5px]">
-          <div class="flex justify-between"><dt class="text-sub">공사비</dt><dd class="num font-bold text-ink">약 18억원</dd></div>
-          <div class="flex justify-between"><dt class="text-sub">공사기간</dt><dd class="num font-bold text-ink">3개월+</dd></div>
+        <div class="text-[11px] font-bold text-sub/70 tracking-widest mb-3 uppercase">기존 공법 ②</div>
+        <h3 class="t-h3 text-ink mb-1">에폭시 라이닝</h3>
+        <p class="text-sub text-[13px] mb-5 leading-relaxed">배관 내벽에 에폭시 수지를 도포하는 갱생 공법. 일부 유해물질 우려 존재.</p>
+        <dl class="space-y-3 text-[14px]">
+          <div class="flex justify-between items-center border-b border-line pb-2">
+            <dt class="text-sub">공사비 (300세대 기준)</dt>
+            <dd class="num font-bold text-ink text-[16px]">약 18억원</dd>
+          </div>
+          <div class="flex justify-between items-center border-b border-line pb-2">
+            <dt class="text-sub">공사기간</dt>
+            <dd class="num font-bold text-ink text-[16px]">3개월 이상</dd>
+          </div>
+          <div class="flex justify-between items-center">
+            <dt class="text-sub">입주자 불편</dt>
+            <dd class="font-bold text-[#f0a500]">높음</dd>
+          </div>
         </dl>
       </article>
       <article class="bg-blue text-white rounded-[18px] p-7 relative overflow-hidden">
         <span class="absolute -top-3 right-6 bg-gold text-ink text-[11px] font-extrabold tracking-widest px-3 py-1 rounded-full">BEST</span>
-        <div class="text-[12px] font-semibold text-white/80 mb-2 tracking-widest">PATENT</div>
-        <h3 class="t-h3 mb-4">크린워터 갱생 ★</h3>
-        <dl class="space-y-2 text-[14.5px]">
-          <div class="flex justify-between"><dt class="text-white/85">공사비</dt><dd class="num font-extrabold text-[20px]">약 7억원</dd></div>
-          <div class="flex justify-between"><dt class="text-white/85">공사기간</dt><dd class="num font-extrabold text-[20px]">약 1개월</dd></div>
+        <div class="text-[11px] font-bold text-white/60 tracking-widest mb-3 uppercase">특허공법 · 크린워터시스템</div>
+        <h3 class="t-h3 text-white mb-1">크린워터 갱생</h3>
+        <p class="text-white/75 text-[13px] mb-5 leading-relaxed">자화활성수기 특허공법으로 배관 내 녹물·스케일 제거. 입주자 거주 중 시공 가능.</p>
+        <dl class="space-y-3 text-[14px]">
+          <div class="flex justify-between items-center border-b border-white/15 pb-2">
+            <dt class="text-white/80">공사비 (300세대 기준)</dt>
+            <dd class="num font-extrabold text-[18px]">약 7억원</dd>
+          </div>
+          <div class="flex justify-between items-center border-b border-white/15 pb-2">
+            <dt class="text-white/80">공사기간</dt>
+            <dd class="num font-extrabold text-[18px]">약 1개월</dd>
+          </div>
+          <div class="flex justify-between items-center">
+            <dt class="text-white/80">입주자 불편</dt>
+            <dd class="font-bold text-gold">최소화</dd>
+          </div>
         </dl>
-        <div class="mt-5 pt-4 border-t border-white/15 text-[12px] text-white/70">자화활성수기 특허공법 기반</div>
       </article>
     </div>
   </div>
@@ -1023,10 +1017,14 @@
   // Notice pagination
   (function(){
     const notices = [
-      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.', date: '2025.12.10' },
-      { title: '조달청 우수세척업체 등록 완료', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2025.12.01' },
-      { title: '예비사회적기업 지정 안내', body: '울산광역시로부터 예비사회적기업으로 공식 지정되었습니다. 취약계층 지원을 더욱 강화합니다.', date: '2025.12.01' },
-      { title: '협회 공식 창립 안내', body: '대한민국수도배관세척관리총연합회가 공식 창립되었습니다. 안전한 수돗물 환경을 위해 함께합니다.', date: '2025.11.01' },
+      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, 정가 ₩990,000 → ₩350,000. 증빙서류 지참 후 문의 주세요.', date: '2025.12.10' },
+      { title: '조달청 우수세척업체 공식 등록', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2025.12.01' },
+      { title: '예비사회적기업 지정 안내', body: '울산광역시로부터 예비사회적기업으로 공식 지정되었습니다. 취약계층을 위한 교육 지원을 더욱 강화합니다.', date: '2025.12.01' },
+      { title: '수도법 시행규칙 §23-1 의무화 안내', body: '준공검사 5년 경과 후 2년 주기로 수도배관의 세척·갱생·교체가 법적으로 의무화되어 있습니다. 자격을 갖춘 전문인력이 필요합니다.', date: '2025.11.20' },
+      { title: '크린워터시스템 특허공법 도입', body: '자화활성수기 기반 크린워터 갱생 특허공법을 도입하였습니다. 배관교체(24억) 대비 약 70% 비용 절감이 가능합니다.', date: '2025.11.15' },
+      { title: '옥내 수도배관 우수세척업체 인증', body: '환경부 인증 옥내 수도배관 우수세척업체로 선정되었습니다. 검증된 기술력으로 안심 시공합니다.', date: '2025.11.10' },
+      { title: '울산광역시 업무협약(MOU) 체결', body: '취약계층 일자리 창출을 위해 울산광역시와 공식 업무협약(MOU)을 체결하였습니다.', date: '2025.11.05' },
+      { title: '협회 공식 창립 안내', body: '대한민국수도배관세척관리총연합회가 공식 창립되었습니다. 깨끗한 수돗물 환경을 위해 함께합니다.', date: '2025.11.01' },
     ];
     const PER_PAGE = 2;
     const total = Math.ceil(notices.length / PER_PAGE);
