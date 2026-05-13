@@ -901,35 +901,35 @@
       <div class="flex items-center gap-4 text-white/55 text-[13px] mb-6">
         <span class="flex-1 h-px bg-white/15"></span> 또는 직접 연락 <span class="flex-1 h-px bg-white/15"></span>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <a href="tel:1899-3953" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-[18px] p-5 flex items-center gap-4 transition">
-          <div class="w-12 h-12 rounded-xl bg-gold text-ink flex items-center justify-center"><i data-lucide="phone" class="w-6 h-6"></i></div>
-          <div>
+          <div class="w-12 h-12 rounded-xl bg-gold text-ink flex items-center justify-center shrink-0"><i data-lucide="phone" class="w-6 h-6"></i></div>
+          <div class="min-w-0">
             <div class="text-[12.5px] text-white/60">전화 상담</div>
-            <div class="font-bold text-[20px] num">1899-3953</div>
+            <div class="font-bold text-[18px] num truncate">1899-3953</div>
           </div>
         </a>
         <a href="https://pf.kakao.com/_LuZxdn" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-[18px] p-5 flex items-center gap-4 transition">
-          <div class="w-12 h-12 rounded-xl bg-[#FEE500] flex items-center justify-center"><i data-lucide="message-circle" class="w-6 h-6 text-[#3C1E1E]"></i></div>
-          <div>
+          <div class="w-12 h-12 rounded-xl bg-[#FEE500] flex items-center justify-center shrink-0"><i data-lucide="message-circle" class="w-6 h-6 text-[#3C1E1E]"></i></div>
+          <div class="min-w-0">
             <div class="text-[12.5px] text-white/60">카카오톡 채널</div>
             <div class="font-bold text-[15px]">채널 상담하기</div>
           </div>
         </a>
         <a href="https://www.instagram.com/ulsan_kwpca" target="_blank" rel="noopener" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-[18px] p-5 flex items-center gap-4 transition">
-          <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)"><i data-lucide="instagram" class="w-6 h-6 text-white"></i></div>
-          <div>
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7)"><i data-lucide="instagram" class="w-6 h-6 text-white"></i></div>
+          <div class="min-w-0">
             <div class="text-[12.5px] text-white/60">인스타그램</div>
-            <div class="font-bold text-[15px]">@ulsan_kwpca</div>
+            <div class="font-bold text-[15px] truncate">@ulsan_kwpca</div>
           </div>
         </a>
-        <a href="mailto:kwpca@naver.com" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-[18px] p-5 flex items-center gap-4 transition">
-          <div class="w-12 h-12 rounded-xl bg-teal flex items-center justify-center"><i data-lucide="mail" class="w-6 h-6 text-white"></i></div>
-          <div>
-            <div class="text-[12.5px] text-white/60">이메일</div>
-            <div class="font-bold text-[15px]">kwpca@naver.com</div>
+        <button id="emailCopyBtn" onclick="navigator.clipboard.writeText('kwpca@naver.com').then(()=>showToast('이메일 주소가 복사되었습니다.'))" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-[18px] p-5 flex items-center gap-4 transition w-full text-left cursor-pointer">
+          <div class="w-12 h-12 rounded-xl bg-teal flex items-center justify-center shrink-0"><i data-lucide="mail" class="w-6 h-6 text-white"></i></div>
+          <div class="min-w-0">
+            <div class="text-[12.5px] text-white/60">이메일 (탭하면 복사)</div>
+            <div class="font-bold text-[15px] truncate">kwpca@naver.com</div>
           </div>
-        </a>
+        </button>
       </div>
     </div>
   </div>
