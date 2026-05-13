@@ -359,7 +359,7 @@
         <div class="ic"><i data-lucide="calendar-clock" class="w-5 h-5 text-white"></i></div>
         <div>
           <div class="lbl">모집</div>
-          <div class="val">2026년 3기 ・ 선착순 20명</div>
+          <div class="val">선착순 20명 ・ 일정 문의</div>
         </div>
       </div>
     </div>
@@ -396,7 +396,7 @@
       <!-- Pager -->
       <div class="mt-8 flex items-center justify-center gap-4 reveal">
         <button id="noticePrev" class="pager-arrow" aria-label="prev"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
-        <span id="noticePager" class="text-white/80 text-[14px] num font-medium">1 / 5</span>
+        <span id="noticePager" class="text-white/80 text-[14px] num font-medium">1 / 2</span>
         <button id="noticeNext" class="pager-arrow" aria-label="next"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
         <button class="pager-add ml-2" aria-label="more" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})"><i data-lucide="plus" class="w-5 h-5"></i></button>
       </div>
@@ -407,7 +407,7 @@
       <div class="flex items-center justify-between mb-5 reveal">
         <h3 class="text-white font-num font-bold text-[22px]">공지</h3>
         <div class="flex items-center gap-2">
-          <span id="pd0" class="dot active"></span><span id="pd1" class="dot"></span><span id="pd2" class="dot"></span>
+          <span id="pd0" class="dot active"></span><span id="pd1" class="dot"></span>
           <button id="pprev" class="text-white/70 hover:text-white ml-2" aria-label="prev"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
           <button id="pnext" class="text-white/70 hover:text-white" aria-label="next"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
         </div>
@@ -488,52 +488,14 @@
     <div class="bg-white rounded-[18px] p-8 lg:p-10 shadow-card reveal">
       <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-6">2026 Schedule</div>
 
-      <ol class="space-y-6 lg:space-y-7">
-        <li class="flex items-start gap-6 sch-card opacity-50">
-          <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
-          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1 border-b border-line pb-5">
-            <div>
-              <div class="date num line-through">01.13 ~ 01.16</div>
-              <div class="sub mt-2">2026 January · 1기 4일 집중과정 (주중반)</div>
-            </div>
-            <span class="text-[12px] font-semibold text-[#aaa] whitespace-nowrap">마감</span>
-          </div>
-        </li>
-        <li class="flex items-start gap-6 sch-card opacity-50">
-          <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
-          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1 border-b border-line pb-5">
-            <div>
-              <div class="date num line-through">03.03 ~ 03.06</div>
-              <div class="sub mt-2">2026 March · 2기 정규과정 (현장 실습 포함)</div>
-            </div>
-            <span class="text-[12px] font-semibold text-[#aaa] whitespace-nowrap">마감</span>
-          </div>
-        </li>
-        <li class="flex items-start gap-6 sch-card">
-          <div class="pt-3 shrink-0"><span class="sch-dot" style="background:var(--blue);box-shadow:0 0 0 4px rgba(45,78,213,.18)"></span></div>
-          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1 border-b border-line pb-5">
-            <div>
-              <div class="date num">06.23 ~ 06.26</div>
-              <div class="sub mt-2">2026 June · 3기 4일 집중과정 (주중반) <span class="text-blue font-semibold">모집중</span></div>
-            </div>
-            <a href="#cta" class="text-blue text-[13px] font-semibold inline-flex items-center gap-1 whitespace-nowrap">
-              신청하기 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </li>
-        <li class="flex items-start gap-6 sch-card">
-          <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
-          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1">
-            <div>
-              <div class="date num">07.12 ~ 07.13</div>
-              <div class="sub mt-2">2026 July · 3기 주말 단기반 (토·일)</div>
-            </div>
-            <a href="#cta" class="text-blue text-[13px] font-semibold inline-flex items-center gap-1 whitespace-nowrap">
-              신청하기 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </a>
-          </div>
-        </li>
-      </ol>
+      <div class="flex flex-col items-center justify-center py-12 text-center gap-4">
+        <i data-lucide="calendar-clock" class="w-12 h-12 text-blue/40"></i>
+        <p class="text-ink font-semibold text-[17px]">다음 교육 일정을 준비 중입니다</p>
+        <p class="text-sub text-[14px]">정확한 일정은 전화 또는 카카오톡 채널로 문의해 주세요.</p>
+        <a href="#cta" class="mt-2 inline-flex items-center gap-2 bg-blue text-white font-semibold text-[14px] px-6 py-3 rounded-xl hover:bg-blue2 transition">
+          상담 신청하기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
     </div>
 
     <!-- CTA -->
@@ -1017,27 +979,21 @@
   (function(){
     const slides = [
       {
-        tag: '2026년도 3기',
-        title: '3기 수강생<br>모집 중',
-        items: ['· 일정: 6월 23일(화) ~ 26일(금)', '· 정가 ₩990,000 → <span class="text-white font-semibold">₩350,000</span> (취약계층)', '· 선착순 20명 · 문의: <span class="num">1899-3953</span>'],
-        link: '#cta'
-      },
-      {
         tag: '특별지원',
         title: '취약계층<br>64% 할인',
         items: ['· 대상: 기초·차상위·장애인·시니어 등', '· 경력단절여성 포함', '· 정가 ₩990,000 → <span class="text-white font-semibold">₩350,000</span>'],
         link: '#pricing'
       },
       {
-        tag: '주말 단기반',
-        title: '7월 주말반<br>추가 개설',
-        items: ['· 일정: 7월 12일(토) ~ 13일(일)', '· 평일 수강이 어려운 분 대상', '· 문의: <span class="num">1899-3953</span>'],
-        link: '#cta'
+        tag: '교육 안내',
+        title: '단 30시간,<br>자격증 취득',
+        items: ['· 이론 + 실습 + 현장 실습 포함', '· 4일 집중과정 · 1:1 맞춤 수업', '· 문의: <span class="num">1899-3953</span>'],
+        link: '#curriculum'
       },
     ];
     let cur = 0;
     const card = document.getElementById('popupCard');
-    const dots = [document.getElementById('pd0'), document.getElementById('pd1'), document.getElementById('pd2')];
+    const dots = [document.getElementById('pd0'), document.getElementById('pd1')];
 
     function render() {
       const s = slides[cur];
@@ -1064,15 +1020,9 @@
   // Notice pagination
   (function(){
     const notices = [
-      { title: '2026년도 3기 수강생 모집', body: '6월 23일(화)~26일(금) 4일 30시간 과정. 자격증 취득부터 현장 실습까지. 선착순 20명 마감.', date: '2026.05.12' },
-      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.', date: '2026.05.01' },
-      { title: '3기 주말 단기반 추가 개설', body: '7월 12일(토)~13일(일) 주말 단기반을 추가 개설합니다. 평일 수강이 어려운 분들을 위한 과정입니다.', date: '2026.04.25' },
-      { title: '2기 수료생 취업 연계 현황', body: '2기 수료생 18명 중 14명이 세척 파트너사 취업 또는 창업에 성공하였습니다.', date: '2026.04.10' },
-      { title: '취업 연계 지원 프로그램 확대', body: '수료 후 전국 세척 파트너사 취업 연계 및 창업 컨설팅을 무료로 지원합니다.', date: '2026.03.20' },
-      { title: '2기 정규과정 성황리 마감', body: '2026년 3월 2기 과정이 성황리에 마감되었습니다. 3기 모집에 많은 관심 부탁드립니다.', date: '2026.03.07' },
-      { title: '조달청 우수세척업체 등록 완료', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2026.02.14' },
-      { title: '예비사회적기업 지정 안내', body: '울산광역시로부터 예비사회적기업으로 공식 지정되었습니다. 취약계층 지원을 더욱 강화합니다.', date: '2026.01.20' },
-      { title: '울산광역시 업무협약(MOU) 체결', body: '취약계층 일자리 창출을 위해 울산광역시와 업무협약을 체결하였습니다.', date: '2025.12.18' },
+      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.', date: '2025.12.10' },
+      { title: '조달청 우수세척업체 등록 완료', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2025.12.01' },
+      { title: '예비사회적기업 지정 안내', body: '울산광역시로부터 예비사회적기업으로 공식 지정되었습니다. 취약계층 지원을 더욱 강화합니다.', date: '2025.12.01' },
       { title: '협회 공식 창립 안내', body: '대한민국수도배관세척관리총연합회가 공식 창립되었습니다. 안전한 수돗물 환경을 위해 함께합니다.', date: '2025.11.01' },
     ];
     const PER_PAGE = 2;
