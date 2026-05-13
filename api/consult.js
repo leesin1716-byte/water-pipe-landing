@@ -102,7 +102,7 @@ module.exports = async function handler(req, res) {
 
     await transporter.sendMail({
       from: `"KWPA 상담알림" <${process.env.GMAIL_USER}>`,
-      to: process.env.NOTIFY_EMAIL || 'kwpca@naver.com',
+      to: (process.env.NOTIFY_EMAIL || 'kwpca@naver.com').split(',').map(e => e.trim()),
       subject: `[상담신청] ${name.trim()} · ${phoneFormatted}`,
       html: `
         <div style="font-family:-apple-system,sans-serif;max-width:500px;margin:0 auto;background:#f4f7fb;padding:28px;border-radius:14px;">
