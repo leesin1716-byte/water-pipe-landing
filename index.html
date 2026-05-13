@@ -359,7 +359,7 @@
         <div class="ic"><i data-lucide="calendar-clock" class="w-5 h-5 text-white"></i></div>
         <div>
           <div class="lbl">모집</div>
-          <div class="val">2026년 1기 ・ 선착순 20명</div>
+          <div class="val">2026년 3기 ・ 선착순 20명</div>
         </div>
       </div>
     </div>
@@ -405,26 +405,14 @@
     <!-- Popup column -->
     <div>
       <div class="flex items-center justify-between mb-5 reveal">
-        <h3 class="text-white font-num font-bold text-[22px]">Popup</h3>
+        <h3 class="text-white font-num font-bold text-[22px]">공지</h3>
         <div class="flex items-center gap-2">
-          <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
-          <button class="text-white/70 hover:text-white ml-2" aria-label="prev"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-          <button class="text-white/70 hover:text-white" aria-label="next"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          <span id="pd0" class="dot active"></span><span id="pd1" class="dot"></span><span id="pd2" class="dot"></span>
+          <button id="pprev" class="text-white/70 hover:text-white ml-2" aria-label="prev"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+          <button id="pnext" class="text-white/70 hover:text-white" aria-label="next"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
         </div>
       </div>
-
-      <div class="popup-card reveal">
-        <span class="tag mb-4">2026년도 1기</span>
-        <h4 class="text-white t-h2 mt-4 mb-5">취약계층<br>특별지원 안내</h4>
-        <ul class="text-white/75 text-[13.5px] space-y-1.5 mb-5">
-          <li>· 신청대상: 기초·차상위·장애인·시니어 등</li>
-          <li>· 정가 ₩990,000 → <span class="text-white font-semibold">₩350,000</span></li>
-          <li>· 신청문의: <span class="num">1899-3953</span></li>
-        </ul>
-        <a href="#cta" class="inline-flex items-center gap-1.5 text-white font-semibold text-[13.5px] border-b border-white/40 pb-1 hover:border-white">
-          자세히 보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
+      <div id="popupCard" class="popup-card reveal"></div>
     </div>
   </div>
 
@@ -501,24 +489,32 @@
       <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-6">2026 Schedule</div>
 
       <ol class="space-y-6 lg:space-y-7">
-        <li class="flex items-start gap-6 sch-card">
+        <li class="flex items-start gap-6 sch-card opacity-50">
           <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
           <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1 border-b border-line pb-5">
             <div>
-              <div class="date num">01.13 ~ 01.16</div>
+              <div class="date num line-through">01.13 ~ 01.16</div>
               <div class="sub mt-2">2026 January · 1기 4일 집중과정 (주중반)</div>
             </div>
-            <a href="#cta" class="text-blue text-[13px] font-semibold inline-flex items-center gap-1 whitespace-nowrap">
-              신청하기 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-            </a>
+            <span class="text-[12px] font-semibold text-[#aaa] whitespace-nowrap">마감</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-6 sch-card opacity-50">
+          <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
+          <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1 border-b border-line pb-5">
+            <div>
+              <div class="date num line-through">03.03 ~ 03.06</div>
+              <div class="sub mt-2">2026 March · 2기 정규과정 (현장 실습 포함)</div>
+            </div>
+            <span class="text-[12px] font-semibold text-[#aaa] whitespace-nowrap">마감</span>
           </div>
         </li>
         <li class="flex items-start gap-6 sch-card">
-          <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
+          <div class="pt-3 shrink-0"><span class="sch-dot" style="background:var(--blue);box-shadow:0 0 0 4px rgba(45,78,213,.18)"></span></div>
           <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1 border-b border-line pb-5">
             <div>
-              <div class="date num">02.07 ~ 02.08</div>
-              <div class="sub mt-2">2026 February · 1기 주말 단기반 (토·일)</div>
+              <div class="date num">06.23 ~ 06.26</div>
+              <div class="sub mt-2">2026 June · 3기 4일 집중과정 (주중반) <span class="text-blue font-semibold">모집중</span></div>
             </div>
             <a href="#cta" class="text-blue text-[13px] font-semibold inline-flex items-center gap-1 whitespace-nowrap">
               신청하기 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
@@ -529,8 +525,8 @@
           <div class="pt-3 shrink-0"><span class="sch-dot"></span></div>
           <div class="grid grid-cols-[1fr_auto] items-baseline gap-x-8 flex-1">
             <div>
-              <div class="date num">03.03 ~ 03.06</div>
-              <div class="sub mt-2">2026 March · 2기 정규과정 (현장 실습 포함)</div>
+              <div class="date num">07.12 ~ 07.13</div>
+              <div class="sub mt-2">2026 July · 3기 주말 단기반 (토·일)</div>
             </div>
             <a href="#cta" class="text-blue text-[13px] font-semibold inline-flex items-center gap-1 whitespace-nowrap">
               신청하기 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
@@ -736,7 +732,7 @@
         </div>
         <div class="text-white">
           <div class="font-bold text-[14px] drop-shadow">FACEBOOK</div>
-          <div class="text-[11px] opacity-85 num drop-shadow">2025.12.08</div>
+          <div class="text-[11px] opacity-85 num drop-shadow">2026.05.08</div>
         </div>
       </div>
       <div class="absolute bottom-5 left-5 right-5 flex items-center justify-between">
@@ -769,7 +765,7 @@
         <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center"><i data-lucide="facebook" class="w-4 h-4 text-teal"></i></div>
         <div>
           <div class="font-bold text-[13px]">FACEBOOK</div>
-          <div class="text-[11px] text-white/70 num">2025.11.24</div>
+          <div class="text-[11px] text-white/70 num">2026.04.21</div>
         </div>
       </div>
     </div>
@@ -1016,19 +1012,67 @@
   function refreshIcons(){ if(window.lucide) lucide.createIcons(); }
   refreshIcons();
 
+  // Popup slider
+  (function(){
+    const slides = [
+      {
+        tag: '2026년도 3기',
+        title: '3기 수강생<br>모집 중',
+        items: ['· 일정: 6월 23일(화) ~ 26일(금)', '· 정가 ₩990,000 → <span class="text-white font-semibold">₩350,000</span> (취약계층)', '· 선착순 20명 · 문의: <span class="num">1899-3953</span>'],
+        link: '#cta'
+      },
+      {
+        tag: '특별지원',
+        title: '취약계층<br>64% 할인',
+        items: ['· 대상: 기초·차상위·장애인·시니어 등', '· 경력단절여성 포함', '· 정가 ₩990,000 → <span class="text-white font-semibold">₩350,000</span>'],
+        link: '#pricing'
+      },
+      {
+        tag: '주말 단기반',
+        title: '7월 주말반<br>추가 개설',
+        items: ['· 일정: 7월 12일(토) ~ 13일(일)', '· 평일 수강이 어려운 분 대상', '· 문의: <span class="num">1899-3953</span>'],
+        link: '#cta'
+      },
+    ];
+    let cur = 0;
+    const card = document.getElementById('popupCard');
+    const dots = [document.getElementById('pd0'), document.getElementById('pd1'), document.getElementById('pd2')];
+
+    function render() {
+      const s = slides[cur];
+      card.innerHTML = `
+        <span class="tag mb-4">${s.tag}</span>
+        <h4 class="text-white t-h2 mt-4 mb-5">${s.title}</h4>
+        <ul class="text-white/75 text-[13.5px] space-y-1.5 mb-5">
+          ${s.items.map(i => `<li>${i}</li>`).join('')}
+        </ul>
+        <a href="${s.link}" class="inline-flex items-center gap-1.5 text-white font-semibold text-[13.5px] border-b border-white/40 pb-1 hover:border-white">
+          자세히 보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+      refreshIcons();
+    }
+
+    document.getElementById('pprev').addEventListener('click', () => { cur = (cur - 1 + slides.length) % slides.length; render(); });
+    document.getElementById('pnext').addEventListener('click', () => { cur = (cur + 1) % slides.length; render(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { cur = i; render(); }));
+    setInterval(() => { cur = (cur + 1) % slides.length; render(); }, 5000);
+    render();
+  })();
+
   // Notice pagination
   (function(){
     const notices = [
-      { title: '2026학년도 1기 수강생 모집', body: '법으로 보장된 평생직업, 수도배관세척관리사 2급. 단 4일 30시간으로 자격증과 현장 실습까지.', date: '2025.12.15' },
-      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.', date: '2025.12.10' },
-      { title: '교육일정 확정 안내', body: '2026년 2월 17일(화)~20일(금), 4일 30시간 과정. 장소: 울산 남구 남부순환도로 551 교육장.', date: '2025.12.05' },
-      { title: '취업 연계 지원 프로그램 안내', body: '수료 후 전국 세척 파트너사 취업 연계 및 창업 컨설팅을 무료로 지원합니다.', date: '2025.11.28' },
-      { title: '조달청 우수세척업체 등록 완료', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2025.11.20' },
-      { title: '현장실습 파트너 업체 모집', body: '수강생 현장실습을 위한 협력 업체를 모집합니다. 관심 있는 업체는 1899-3953으로 문의 바랍니다.', date: '2025.11.15' },
-      { title: '예비사회적기업 지정 안내', body: '2025년 12월, 울산광역시로부터 예비사회적기업으로 공식 지정되었습니다.', date: '2025.11.10' },
-      { title: '울산광역시 협약 체결', body: '취약계층 일자리 창출을 위해 울산광역시와 업무협약(MOU)을 체결하였습니다.', date: '2025.11.05' },
-      { title: '수도배관세척 자격 제도 안내', body: '수도법 개정으로 의무화된 수도배관 세척 자격 제도의 취지와 사회적 필요성을 안내합니다.', date: '2025.10.30' },
-      { title: '협회 공식 창립 안내', body: '대한민국수도배관세척관리총연합회가 공식 창립되었습니다. 안전한 수돗물 환경을 위해 함께합니다.', date: '2025.10.20' },
+      { title: '2026년도 3기 수강생 모집', body: '6월 23일(화)~26일(금) 4일 30시간 과정. 자격증 취득부터 현장 실습까지. 선착순 20명 마감.', date: '2026.05.12' },
+      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.', date: '2026.05.01' },
+      { title: '3기 주말 단기반 추가 개설', body: '7월 12일(토)~13일(일) 주말 단기반을 추가 개설합니다. 평일 수강이 어려운 분들을 위한 과정입니다.', date: '2026.04.25' },
+      { title: '2기 수료생 취업 연계 현황', body: '2기 수료생 18명 중 14명이 세척 파트너사 취업 또는 창업에 성공하였습니다.', date: '2026.04.10' },
+      { title: '취업 연계 지원 프로그램 확대', body: '수료 후 전국 세척 파트너사 취업 연계 및 창업 컨설팅을 무료로 지원합니다.', date: '2026.03.20' },
+      { title: '2기 정규과정 성황리 마감', body: '2026년 3월 2기 과정이 성황리에 마감되었습니다. 3기 모집에 많은 관심 부탁드립니다.', date: '2026.03.07' },
+      { title: '조달청 우수세척업체 등록 완료', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2026.02.14' },
+      { title: '예비사회적기업 지정 안내', body: '울산광역시로부터 예비사회적기업으로 공식 지정되었습니다. 취약계층 지원을 더욱 강화합니다.', date: '2026.01.20' },
+      { title: '울산광역시 업무협약(MOU) 체결', body: '취약계층 일자리 창출을 위해 울산광역시와 업무협약을 체결하였습니다.', date: '2025.12.18' },
+      { title: '협회 공식 창립 안내', body: '대한민국수도배관세척관리총연합회가 공식 창립되었습니다. 안전한 수돗물 환경을 위해 함께합니다.', date: '2025.11.01' },
     ];
     const PER_PAGE = 2;
     const total = Math.ceil(notices.length / PER_PAGE);
