@@ -391,29 +391,14 @@
         <h2 class="text-white/65 t-h1">자료실</h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 gap-5 stagger reveal">
-        <article class="notice">
-          <div>
-            <h4>2026학년도 1기 수강생 모집</h4>
-            <p>법으로 보장된 평생직업, 수도배관세척관리사 2급. 단 4일 30시간으로 자격증과 현장 실습까지.</p>
-          </div>
-          <div class="date">2025.12.15</div>
-        </article>
-        <article class="notice">
-          <div>
-            <h4>취약계층 특별지원 64% 할인 안내</h4>
-            <p>기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.</p>
-          </div>
-          <div class="date">2025.12.10</div>
-        </article>
-      </div>
+      <div id="noticeGrid" class="grid sm:grid-cols-2 gap-5"></div>
 
       <!-- Pager -->
       <div class="mt-8 flex items-center justify-center gap-4 reveal">
-        <button class="pager-arrow" aria-label="prev"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
-        <span class="text-white/80 text-[14px] num font-medium">3 / 5</span>
-        <button class="pager-arrow" aria-label="next"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
-        <button class="pager-add ml-2" aria-label="more"><i data-lucide="plus" class="w-5 h-5"></i></button>
+        <button id="noticePrev" class="pager-arrow" aria-label="prev"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+        <span id="noticePager" class="text-white/80 text-[14px] num font-medium">1 / 5</span>
+        <button id="noticeNext" class="pager-arrow" aria-label="next"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+        <button class="pager-add ml-2" aria-label="more" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})"><i data-lucide="plus" class="w-5 h-5"></i></button>
       </div>
     </div>
 
@@ -938,6 +923,46 @@
 <script>
   function refreshIcons(){ if(window.lucide) lucide.createIcons(); }
   refreshIcons();
+
+  // Notice pagination
+  (function(){
+    const notices = [
+      { title: '2026학년도 1기 수강생 모집', body: '법으로 보장된 평생직업, 수도배관세척관리사 2급. 단 4일 30시간으로 자격증과 현장 실습까지.', date: '2025.12.15' },
+      { title: '취약계층 특별지원 64% 할인 안내', body: '기초생활수급자·차상위·장애인·만 65세 이상·경력단절여성 대상, ₩990,000 → ₩350,000.', date: '2025.12.10' },
+      { title: '교육일정 확정 안내', body: '2026년 2월 17일(화)~20일(금), 4일 30시간 과정. 장소: 울산 남구 남부순환도로 551 교육장.', date: '2025.12.05' },
+      { title: '취업 연계 지원 프로그램 안내', body: '수료 후 전국 세척 파트너사 취업 연계 및 창업 컨설팅을 무료로 지원합니다.', date: '2025.11.28' },
+      { title: '조달청 우수세척업체 등록 완료', body: '대한민국수도배관세척관리총연합회가 조달청 우수세척업체로 공식 등록되었습니다.', date: '2025.11.20' },
+      { title: '현장실습 파트너 업체 모집', body: '수강생 현장실습을 위한 협력 업체를 모집합니다. 관심 있는 업체는 1899-3953으로 문의 바랍니다.', date: '2025.11.15' },
+      { title: '예비사회적기업 지정 안내', body: '2025년 12월, 울산광역시로부터 예비사회적기업으로 공식 지정되었습니다.', date: '2025.11.10' },
+      { title: '울산광역시 협약 체결', body: '취약계층 일자리 창출을 위해 울산광역시와 업무협약(MOU)을 체결하였습니다.', date: '2025.11.05' },
+      { title: '수도배관세척 자격 제도 안내', body: '수도법 개정으로 의무화된 수도배관 세척 자격 제도의 취지와 사회적 필요성을 안내합니다.', date: '2025.10.30' },
+      { title: '협회 공식 창립 안내', body: '대한민국수도배관세척관리총연합회가 공식 창립되었습니다. 안전한 수돗물 환경을 위해 함께합니다.', date: '2025.10.20' },
+    ];
+    const PER_PAGE = 2;
+    const total = Math.ceil(notices.length / PER_PAGE);
+    let cur = 1;
+    const grid = document.getElementById('noticeGrid');
+    const pager = document.getElementById('noticePager');
+
+    function render() {
+      const start = (cur - 1) * PER_PAGE;
+      grid.innerHTML = notices.slice(start, start + PER_PAGE).map(n => `
+        <article class="notice">
+          <div>
+            <h4>${n.title}</h4>
+            <p>${n.body}</p>
+          </div>
+          <div class="date">${n.date}</div>
+        </article>`).join('');
+      pager.textContent = cur + ' / ' + total;
+      document.getElementById('noticePrev').style.opacity = cur === 1 ? '0.3' : '1';
+      document.getElementById('noticeNext').style.opacity = cur === total ? '0.3' : '1';
+    }
+
+    document.getElementById('noticePrev').addEventListener('click', () => { if (cur > 1) { cur--; render(); } });
+    document.getElementById('noticeNext').addEventListener('click', () => { if (cur < total) { cur++; render(); } });
+    render();
+  })();
 
   // Hero word-up on title
   (function(){
