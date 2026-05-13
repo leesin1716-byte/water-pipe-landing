@@ -1300,18 +1300,45 @@
       btn.disabled = true;
       label.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i> 신청 중…';
       refreshIcons();
-      setTimeout(() => {
-        label.innerHTML = '<i data-lucide="check-circle-2" class="w-5 h-5"></i> 신청이 완료되었습니다';
-        btn.style.background = '#28a99c';
-        refreshIcons();
-        showToast('신청이 완료되었습니다. 곧 연락드릴게요.');
-        form.reset();
-        setTimeout(() => {
-          btn.disabled = false; btn.style.background = '';
-          label.innerHTML = '무료 상담 신청하기 <i data-lucide="send" class="w-5 h-5"></i>';
+
+      fetch('/api/consult', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value.trim(),
+          phone: form.phone.value,
+          time: form.time.value,
+        }),
+      })
+        .then(async (res) => {
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            // 서버에서 내려준 에러 메시지 표시
+            const msg = data.error || '오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
+            showToast(msg);
+            label.innerHTML = '무료 상담 신청하기 <i data-lucide="send" class="w-5 h-5"></i>';
+            btn.disabled = false;
+            refreshIcons();
+            return;
+          }
+          // 성공
+          label.innerHTML = '<i data-lucide="check-circle-2" class="w-5 h-5"></i> 신청이 완료되었습니다';
+          btn.style.background = '#28a99c';
           refreshIcons();
-        }, 3500);
-      }, 1100);
+          showToast('신청이 완료되었습니다. 곧 연락드릴게요 😊');
+          form.reset();
+          setTimeout(() => {
+            btn.disabled = false; btn.style.background = '';
+            label.innerHTML = '무료 상담 신청하기 <i data-lucide="send" class="w-5 h-5"></i>';
+            refreshIcons();
+          }, 4000);
+        })
+        .catch(() => {
+          showToast('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+          label.innerHTML = '무료 상담 신청하기 <i data-lucide="send" class="w-5 h-5"></i>';
+          btn.disabled = false;
+          refreshIcons();
+        });
     });
   })();
 
