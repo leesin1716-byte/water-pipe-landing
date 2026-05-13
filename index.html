@@ -337,6 +337,11 @@
         법으로 보장된 평생직업, 단 30시간의 배움으로<br>
         예비사회적기업과 함께 시작하는 인생 2막.
       </p>
+      <div class="mt-8 reveal">
+        <a href="#cta" class="inline-flex items-center gap-2 bg-blue2 hover:bg-blue text-white font-bold text-[16px] px-8 py-4 rounded-[14px] shadow-cta transition">
+          무료 상담 신청하기 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+      </div>
     </div>
 
     <!-- Info cards -->
@@ -405,7 +410,7 @@
     <!-- Popup column -->
     <div>
       <div class="flex items-center justify-between mb-5 reveal">
-        <h3 class="text-white font-num font-bold text-[22px]">공지</h3>
+        <h3 class="text-white font-num font-bold text-[22px]">자료실</h3>
         <div class="flex items-center gap-2">
           <span id="pd0" class="dot active"></span><span id="pd1" class="dot"></span>
           <button id="pprev" class="text-white/70 hover:text-white ml-2" aria-label="prev"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
@@ -1003,9 +1008,7 @@
         <ul class="text-white/75 text-[13.5px] space-y-1.5 mb-5">
           ${s.items.map(i => `<li>${i}</li>`).join('')}
         </ul>
-        <a href="${s.link}" class="inline-flex items-center gap-1.5 text-white font-semibold text-[13.5px] border-b border-white/40 pb-1 hover:border-white">
-          자세히 보기 <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>`;
+        `;
       dots.forEach((d, i) => d.classList.toggle('active', i === cur));
       refreshIcons();
     }
