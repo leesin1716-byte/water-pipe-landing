@@ -282,9 +282,7 @@
   section { scroll-margin-top: 100px; }
 
   /* Cursor accent for hero CTA */
-  .pulse {
-    position: relative;
-  }
+  .pulse { position: relative; }
   .pulse::after {
     content:''; position:absolute; inset: -6px; border-radius: inherit;
     border: 2px solid rgba(255,255,255,.3); animation: pulse 2s ease-out infinite;
@@ -293,6 +291,55 @@
     0% { transform: scale(.95); opacity: 1; }
     100% { transform: scale(1.15); opacity: 0; }
   }
+
+  /* Card hover lift */
+  .card-lift { transition: transform .25s ease, box-shadow .25s ease; }
+  .card-lift:hover { transform: translateY(-6px); box-shadow: 0 28px 56px rgba(14,42,82,.14); }
+
+  /* Notice card hover */
+  .notice { cursor: default; }
+
+  /* BEST badge shimmer */
+  .badge-best {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold); color: var(--ink);
+    font-size: 11px; font-weight: 900; letter-spacing: .12em;
+    padding: 5px 12px; border-radius: 999px;
+    animation: badgePop .5s cubic-bezier(.34,1.56,.64,1) both;
+    box-shadow: 0 4px 12px rgba(255,201,61,.5);
+  }
+  @keyframes badgePop { from { transform: scale(0); opacity:0; } to { transform: scale(1); opacity:1; } }
+
+  /* Counter number animation */
+  .count-num { display:inline-block; }
+
+  /* Section divider gradient */
+  .grad-divider { height: 2px; background: linear-gradient(90deg, transparent, var(--line) 30%, var(--line) 70%, transparent); }
+
+  /* Testimonial review cards */
+  .review-card {
+    background: #fff; border-radius: 18px; padding: 28px;
+    border: 1.5px solid var(--line);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .review-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(14,42,82,.10); border-color: var(--blue)/30; }
+
+  /* Glow on stat numbers */
+  @keyframes numIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+  .stat-num { animation: numIn .6s ease both; }
+
+  /* Star fill utility */
+  .fill-gold { fill: #FFC93D; }
+
+  /* Review card quote accent */
+  .review-card::before {
+    content: '\201C';
+    position: absolute; top: 18px; right: 22px;
+    font-size: 72px; line-height: 1; font-family: Georgia, serif;
+    color: var(--soft); font-weight: 900;
+    pointer-events: none;
+  }
+  .review-card { position: relative; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -314,7 +361,7 @@
       <a href="#about" class="nav-link">자격소개</a>
       <a href="#curriculum" class="nav-link">교육과정</a>
       <a href="#pricing" class="nav-link">수강안내</a>
-      <a href="#schedule" class="nav-link">교육일정</a>
+      <a href="#cases" class="nav-link">수강후기</a>
       <a href="#faq" class="nav-link">자주묻는질문</a>
     </nav>
     <button class="lg:hidden text-white p-2" aria-label="menu"><i data-lucide="menu" class="w-6 h-6"></i></button>
@@ -410,7 +457,7 @@
       <div class="flex items-center justify-between mb-5 reveal">
         <h3 class="text-white font-num font-bold text-[22px]">자료실</h3>
         <div class="flex items-center gap-2">
-          <span id="pd0" class="dot active"></span><span id="pd1" class="dot"></span>
+          <span id="pd0" class="dot active"></span><span id="pd1" class="dot"></span><span id="pd2" class="dot"></span><span id="pd3" class="dot"></span>
           <button id="pprev" class="text-white/70 hover:text-white ml-2" aria-label="prev"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
           <button id="pnext" class="text-white/70 hover:text-white" aria-label="next"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
         </div>
@@ -559,14 +606,14 @@
     </div>
 
     <div class="grid md:grid-cols-3 gap-4 lg:gap-5 stagger reveal">
-      <article class="bg-white rounded-[18px] p-7 border border-line">
+      <article class="bg-white rounded-[18px] p-7 border border-line card-lift">
         <div class="text-[11px] font-bold text-sub/70 tracking-widest mb-3 uppercase">기존 공법 ①</div>
         <h3 class="t-h3 text-ink mb-1">배관 전면 교체</h3>
         <p class="text-sub text-[13px] mb-5 leading-relaxed">노후 배관을 완전 철거 후 신규 배관으로 교체. 입주자 전체 퇴거 필요.</p>
         <dl class="space-y-3 text-[14px]">
           <div class="flex justify-between items-center border-b border-line pb-2">
             <dt class="text-sub">공사비 (300세대 기준)</dt>
-            <dd class="num font-bold text-ink text-[16px]">약 24억원</dd>
+            <dd class="num font-bold text-ink text-[16px] cost-a">약 24억원</dd>
           </div>
           <div class="flex justify-between items-center border-b border-line pb-2">
             <dt class="text-sub">공사기간</dt>
@@ -578,14 +625,14 @@
           </div>
         </dl>
       </article>
-      <article class="bg-white rounded-[18px] p-7 border border-line">
+      <article class="bg-white rounded-[18px] p-7 border border-line card-lift">
         <div class="text-[11px] font-bold text-sub/70 tracking-widest mb-3 uppercase">기존 공법 ②</div>
         <h3 class="t-h3 text-ink mb-1">에폭시 라이닝</h3>
         <p class="text-sub text-[13px] mb-5 leading-relaxed">배관 내벽에 에폭시 수지를 도포하는 갱생 공법. 일부 유해물질 우려 존재.</p>
         <dl class="space-y-3 text-[14px]">
           <div class="flex justify-between items-center border-b border-line pb-2">
             <dt class="text-sub">공사비 (300세대 기준)</dt>
-            <dd class="num font-bold text-ink text-[16px]">약 18억원</dd>
+            <dd class="num font-bold text-ink text-[16px] cost-b">약 18억원</dd>
           </div>
           <div class="flex justify-between items-center border-b border-line pb-2">
             <dt class="text-sub">공사기간</dt>
@@ -597,15 +644,15 @@
           </div>
         </dl>
       </article>
-      <article class="bg-blue text-white rounded-[18px] p-7 relative overflow-hidden">
-        <span class="absolute -top-3 right-6 bg-gold text-ink text-[11px] font-extrabold tracking-widest px-3 py-1 rounded-full">BEST</span>
+      <article class="bg-blue text-white rounded-[18px] p-7 relative card-lift">
+        <span class="badge-best">BEST</span>
         <div class="text-[11px] font-bold text-white/60 tracking-widest mb-3 uppercase">특허공법 · 크린워터시스템</div>
         <h3 class="t-h3 text-white mb-1">크린워터 갱생</h3>
         <p class="text-white/75 text-[13px] mb-5 leading-relaxed">자화활성수기 특허공법으로 배관 내 녹물·스케일 제거. 입주자 거주 중 시공 가능.</p>
         <dl class="space-y-3 text-[14px]">
           <div class="flex justify-between items-center border-b border-white/15 pb-2">
             <dt class="text-white/80">공사비 (300세대 기준)</dt>
-            <dd class="num font-extrabold text-[18px]">약 7억원</dd>
+            <dd class="num font-extrabold text-[18px] cost-c">약 7억원</dd>
           </div>
           <div class="flex justify-between items-center border-b border-white/15 pb-2">
             <dt class="text-white/80">공사기간</dt>
@@ -749,6 +796,84 @@
 </section>
 
 
+<!-- ============== REVIEWS ============== -->
+<section id="cases" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center mb-12 reveal">
+      <div class="text-[13px] font-semibold text-blue tracking-[0.18em] uppercase mb-3">Real Reviews</div>
+      <h2 class="t-h1 text-ink mb-3">직접 경험한 분들의 이야기</h2>
+      <p class="t-bd text-sub max-w-xl mx-auto">세척 전까지 몰랐습니다. 내 집 배관 안에 무엇이 쌓여 있었는지.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 lg:gap-6 stagger reveal">
+
+      <!-- Review 1: education student -->
+      <article class="review-card">
+        <div class="flex items-center gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+        </div>
+        <p class="text-ink text-[15px] leading-relaxed mb-5">
+          "처음엔 그냥 궁금해서 문을 두드렸는데, 나오는 길에 기술 하나를 들고 나왔습니다. 4일이 이렇게 빡빡하고 알찰 줄 몰랐어요. 현장 실습까지 마치고 나니 실제로 일할 수 있겠다는 자신감이 생겼습니다."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-soft flex items-center justify-center text-blue font-bold text-[14px] shrink-0">김</div>
+          <div>
+            <div class="font-semibold text-[14px] text-ink">김○○ 수강생</div>
+            <div class="text-[12px] text-sub">2026년 수강 · 현장 실습 수료</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 2: new apartment customer surprised by dirty water -->
+      <article class="review-card">
+        <div class="flex items-center gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+        </div>
+        <p class="text-ink text-[15px] leading-relaxed mb-5">
+          "입주한 지 얼마 안 된 신축 아파트라 설마 했는데, 세척 후 첫 배출 물 색깔을 보고 정말 깜짝 놀랐어요. 이게 우리 집 수돗물에 섞여 있었다니 소름이 돋았습니다. 세척 후 물맛 자체가 달라진 것 같아요."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-soft flex items-center justify-center text-teal font-bold text-[14px] shrink-0">박</div>
+          <div>
+            <div class="font-semibold text-[14px] text-ink">박○○ 고객</div>
+            <div class="text-[12px] text-sub">울산 신축 아파트 · 세척 후기</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 3: baby home customer -->
+      <article class="review-card">
+        <div class="flex items-center gap-1 mb-4">
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+          <i data-lucide="star" class="w-4 h-4 text-gold fill-gold"></i>
+        </div>
+        <p class="text-ink text-[15px] leading-relaxed mb-5">
+          "아기가 있어서 물 걱정이 많았는데, 욕실 배관에서 특히 녹물이 많이 나왔다고 하더라고요. 세척 후 배출된 물을 직접 보여주셨는데, 이걸 보고 나서야 정기적으로 관리를 해야겠다는 생각이 확 들었어요."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-soft flex items-center justify-center text-gold font-bold text-[14px] shrink-0">이</div>
+          <div>
+            <div class="font-semibold text-[14px] text-ink">이○○ 고객</div>
+            <div class="text-[12px] text-sub">영아 가정 · 울산 남구</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- ============== CTA + FORM ============== -->
 <section id="cta" class="py-20 lg:py-28 bg-gradient-to-br from-deep to-[#082041] text-white relative overflow-hidden">
   <div class="absolute inset-0 opacity-25 pointer-events-none" style="background:
@@ -877,7 +1002,7 @@
         <li><a href="#about" class="hover:text-white">자격소개</a></li>
         <li><a href="#curriculum" class="hover:text-white">교육과정</a></li>
         <li><a href="#pricing" class="hover:text-white">수강안내</a></li>
-        <li><a href="#schedule" class="hover:text-white">교육일정</a></li>
+        <li><a href="#cases" class="hover:text-white">수강후기</a></li>
         <li><a href="#faq" class="hover:text-white">자주묻는질문</a></li>
       </ul>
     </div>
@@ -935,10 +1060,22 @@
         items: ['· 이론 + 실습 + 현장 실습 포함', '· 4일 집중과정 · 1:1 맞춤 수업', '· 문의: <span class="num">1899-3953</span>'],
         link: '#curriculum'
       },
+      {
+        tag: '공인 인증',
+        title: '조달청·환경부<br>공식 등록',
+        items: ['· 조달청 우수세척업체 공식 등록', '· 환경부 인증 옥내 수도배관 세척업체', '· 울산광역시 MOU 공식 업무협약 체결'],
+        link: '#about'
+      },
+      {
+        tag: '특허공법',
+        title: '크린워터<br>갱생 시스템',
+        items: ['· 자화활성수기 기반 특허 세척 공법', '· 배관교체 대비 약 70% 비용 절감', '· 거주 중 시공 가능 · 입주자 불편 최소화'],
+        link: '#about'
+      },
     ];
     let cur = 0;
     const card = document.getElementById('popupCard');
-    const dots = [document.getElementById('pd0'), document.getElementById('pd1')];
+    const dots = [document.getElementById('pd0'), document.getElementById('pd1'), document.getElementById('pd2'), document.getElementById('pd3')];
 
     function render() {
       const s = slides[cur];
@@ -1164,6 +1301,36 @@
           refreshIcons();
         }, 3500);
       }, 1100);
+    });
+  })();
+
+  // Animated counter for WHY NOW cost numbers
+  (function(){
+    const targets = [
+      { selector: '.cost-a', end: 24, suffix: '억원', prefix: '약 ' },
+      { selector: '.cost-b', end: 18, suffix: '억원', prefix: '약 ' },
+      { selector: '.cost-c', end: 7,  suffix: '억원', prefix: '약 ' },
+    ];
+    function animateCount(el, end, prefix, suffix, duration) {
+      const start = performance.now();
+      function step(now) {
+        const t = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = prefix + Math.round(ease * end) + suffix;
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const cfg = targets.find(t => e.target.matches(t.selector));
+        if (cfg) animateCount(e.target, cfg.end, cfg.prefix, cfg.suffix, 1200);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    targets.forEach(t => {
+      document.querySelectorAll(t.selector).forEach(el => io.observe(el));
     });
   })();
 </script>
